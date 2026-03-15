@@ -190,11 +190,13 @@ message:"Server error"
 
 };// ================= UPDATE USER =================
 
+/* ================= UPDATE PROFILE ================= */
+
 exports.updateUser = async (req,res)=>{
 
 try{
 
-const {name,email,age,height,weight,goal} = req.body;
+const { name,email,age,height,weight,goal } = req.body
 
 const user = await User.findByIdAndUpdate(
 
@@ -211,29 +213,18 @@ goal
 
 { new:true }
 
-).select("-password");
+)
 
-if(!user){
-return res.status(404).json({
-message:"User not found"
-});
-}
-
-res.json({
-message:"Profile updated",
-user
-});
+res.json(user)
 
 }
 
 catch(error){
 
-console.log(error);
-
 res.status(500).json({
-message:"Server error"
-});
+message:"Error updating profile"
+})
 
 }
 
-};
+}
