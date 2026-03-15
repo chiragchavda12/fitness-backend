@@ -53,9 +53,7 @@ router.get("/user/:userId", async (req,res)=>{
 try{
 
 const workouts = await Workout.find({
-
 userId:req.params.userId
-
 }).sort({date:-1})
 
 res.json(workouts)
@@ -65,16 +63,12 @@ res.json(workouts)
 catch(error){
 
 res.status(500).json({
-
 message:"Error fetching workout history"
-
 })
 
 }
 
 })
-
-
 /* ================= DELETE WORKOUT ================= */
 
 router.delete("/:id", async (req,res)=>{
