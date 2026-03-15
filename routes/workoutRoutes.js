@@ -9,12 +9,13 @@ router.post("/save", async (req,res)=>{
 
 try{
 
-const { userId, exercise, sets, reps } = req.body
+const { userId, exercise, video, sets, reps } = req.body
 
 const workout = new Workout({
 
 userId:userId,
 exercise:exercise,
+video:video,
 sets:sets,
 reps:reps
 
@@ -24,7 +25,8 @@ await workout.save()
 
 res.status(201).json({
 
-message:"Workout saved successfully"
+message:"Workout saved successfully",
+workout:workout
 
 })
 

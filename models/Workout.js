@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const WorkoutSchema = new mongoose.Schema({
+const workoutSchema = new mongoose.Schema({
 
 userId:{
 type:String,
@@ -12,14 +12,16 @@ type:String,
 required:true
 },
 
+video:{
+type:String
+},
+
 sets:{
-type:Number,
-required:true
+type:Number
 },
 
 reps:{
-type:String,
-required:true
+type:String
 },
 
 date:{
@@ -29,4 +31,4 @@ default:Date.now
 
 })
 
-module.exports = mongoose.model("Workout", WorkoutSchema)
+module.exports = mongoose.model("Workout", workoutSchema)
