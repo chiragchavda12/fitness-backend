@@ -53,7 +53,7 @@ res.json({
 message:"User registered successfully",
 
 user:{
-id:user._id,
+_id:user._id,
 name:user.name,
 email:user.email
 }
@@ -189,7 +189,48 @@ message:"Server error"
 }
 
 };// ================= UPDATE USER =================
+exports.updateUser = async (req,res)=>{
 
+try{
+
+const { name,email,age,height,weight,goal } = req.body
+
+const user = await User.findByIdAndUpdate(
+
+req.params.id,
+
+{
+name,
+email,
+age,
+height,
+weight,
+goal
+},
+
+{ new:true }
+
+)
+
+res.json({
+
+message:"Profile updated",
+
+user:user
+
+})
+
+}
+
+catch(error){
+
+res.status(500).json({
+message:"Error updating profile"
+})
+
+}
+
+}
 /* ================= UPDATE PROFILE ================= */
 
 exports.updateUser = async (req,res)=>{
