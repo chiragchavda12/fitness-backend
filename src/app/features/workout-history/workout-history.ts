@@ -4,68 +4,88 @@ import { HttpClient } from '@angular/common/http'
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser'
 
 @Component({
-selector:'app-workout-history',
-standalone:true,
-imports:[CommonModule],
-templateUrl:'./workout-history.html',
-styleUrls:['./workout-history.css']
+    selector: 'app-workout-history',
+    standalone: true,
+    imports: [CommonModule],
+    templateUrl: './workout-history.html',
+    styleUrls: ['./workout-history.css']
 })
 
-export class WorkoutHistoryComponent implements OnInit{
+export class WorkoutHistoryComponent implements OnInit {
 
-workouts:any[]=[]
+    workouts: any[] = []
 
-api="https://fitness-ai-backend-4ash.onrender.com/api"
+    api = "https://fitness-ai-backend-4ash.onrender.com/api"
 
-constructor(
-private http:HttpClient,
-private sanitizer:DomSanitizer
-){}
+    constructor(
+        private http: HttpClient,
+        private sanitizer: DomSanitizer
+    ) { }
 
-ngOnInit(){
+    ngOnInit() {
 
-const userId = localStorage.getItem("userId")
+        const user = JSON.parse(localStorage.getItem("user") || "{}")
 
-if(!userId){
-return
-}
+        if (!user._id) {
+            console.log("User not logged in")
+            return
+        }
 
-this.http.get<any[]>(this.api + "/workout/user/" + userId)
-.subscribe({
+        /* FETCH HISTORY */
 
-next:(data:any)=>{
+        this.http.get<any[]>(this.api + "/workout/user/" + user._id)
+            .subscribe({
 
-this.workouts=data
+                next: (data) => {
 
-},
+                    this.workouts = data
 
-error:(err)=>{
+                    // 🔥 IMPORTANT FIX (play property add)
+                    this.workouts.forEach(w => w.play = false)
 
-console.log("Workout fetch error",err)
+                },
 
-}
+                error: (err) => {
+                    console.log("Workout history error", err)
+                }
 
-})
+            })
 
-}
+    }
 
-/* ================= SAFE VIDEO ================= */
+    /* SAFE VIDEO */
 
-getSafeUrl(url:string):SafeResourceUrl{
-return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-}
+    getSafeUrl(url: string): SafeResourceUrl {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(url)
+    }
 
-/* ================= DELETE ================= */
+    /* 🔥 VIDEO ID (for thumbnail) */
 
-deleteWorkout(id:string){
+    getVideoId(url: string) {
+        return url.split('/embed/')[1]
+    }
 
-this.http.delete(this.api + "/workout/" + id)
-.subscribe(()=>{
+    /* DELETE WORKOUT */
 
-this.workouts=this.workouts.filter(w=>w._id!==id)
+    deleteWorkout(id: string) {
 
-})
+        this.http.delete(this.api + "/workout/" + id)
+            .subscribe({
 
-}
+                next: () => {
+
+                    this.workouts = this.workouts.filter(w => w._id !== id)
+
+                    alert("🗑 Deleted successfully")
+
+                },
+
+                error: (err) => {
+                    console.log("Delete error", err)
+                }
+
+            })
+
+    }
 
 }

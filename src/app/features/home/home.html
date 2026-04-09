@@ -1,258 +1,142 @@
 <div class="home-page">
 
-<!-- HERO SECTION -->
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1>🏋️ Fitness AI Trainer</h1>
+
+            <p class="tagline">
+                Train Smarter • Eat Better • Become Stronger
+            </p>
+
+            <p class="description">
+                Your intelligent fitness partner that generates personalized workout
+                routines and diet plans using AI. No confusion, no guesswork — just results.
+            </p>
+
+            <div class="hero-buttons">
+                <button routerLink="/ai-trainer" class="primary-btn">
+                    🚀 Start AI Training
+                </button>
+
+                <button routerLink="/workout" class="secondary-btn">
+                    Explore Workouts
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features">
+        <h2>💡 Powerful Fitness Tools</h2>
+
+        <div class="feature-grid">
+
+            <div class="feature-card" routerLink="/ai-trainer">
+                <div class="icon">🤖</div>
+                <h3>AI Trainer</h3>
+                <p>Personalized workout & diet plans based on your goals.</p>
+            </div>
+
+            <div class="feature-card" routerLink="/workout">
+                <div class="icon">🏋️</div>
+                <h3>Workout Library</h3>
+                <p>Explore exercises with proper form and structured routines.</p>
+            </div>
+
+            <div class="feature-card" routerLink="/diet">
+                <div class="icon">🥗</div>
+                <h3>Diet Planner</h3>
+                <p>Smart meal plans for fat loss, muscle gain & maintenance.</p>
+            </div>
+
+            <div class="feature-card" routerLink="/bmi">
+                <div class="icon">📊</div>
+                <h3>BMI Calculator</h3>
+                <p>Track your fitness level with accurate BMI insights.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about">
+        <h2>🚀 Why Fitness AI?</h2>
+
+        <p>
+            Many people struggle with choosing the right workout and diet.
+            Fitness AI solves this by generating smart, personalized plans
+            tailored to your body and goals.
+        </p>
+
+        <p>
+            Whether your goal is fat loss, muscle gain, or staying fit —
+            we guide you every step of the way.
+        </p>
+    </section>
+
+
+    <!-- WORKOUT + DIET (MERGED SECTION FOR CLEAN UI) -->
+    <section class="info-section">
+
+        <div class="info-box">
+            <h2>🔥 Smart Workouts</h2>
+            <ul>
+                <li>✔ Strength Training</li>
+                <li>✔ Cardio Fat Loss</li>
+                <li>✔ Core & Abs</li>
+                <li>✔ Flexibility Training</li>
+                <li>✔ Beginner → Advanced</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h2>🥗 Balanced Diet</h2>
+            <ul>
+                <li>✔ Healthy Meals</li>
+                <li>✔ High Protein Diet</li>
+                <li>✔ Weight Loss Plans</li>
+                <li>✔ Muscle Gain Nutrition</li>
+                <li>✔ Hydration Tips</li>
+            </ul>
+        </div>
 
-<section class="hero">
+    </section>
 
-<div class="hero-content">
 
-<h1>Fitness AI Trainer</h1>
+    <!-- MOTIVATION -->
+    <section class="motivation">
+        <h2>💪 Stay Motivated</h2>
 
-<p>
+        <div class="quotes">
+            <div class="quote">“Take care of your body. It's the only place you have to live.”</div>
+            <div class="quote">“Consistency beats motivation.”</div>
+            <div class="quote">“Your body can achieve what your mind believes.”</div>
+        </div>
+    </section>
 
-Welcome to Fitness AI — a smart fitness platform that helps you build
-a healthier body using artificial intelligence.
 
-Generate personalized workout routines, get diet recommendations,
-track your progress and improve your fitness journey.
+    <!-- CTA -->
+    <section class="cta">
+        <h2>🔥 Transform Your Body Today</h2>
 
-</p>
+        <p>
+            Start your AI-powered fitness journey and achieve real results faster.
+        </p>
 
-<button routerLink="/ai-trainer">
-Start AI Training
-</button>
+        <button routerLink="/ai-trainer" class="cta-btn">
+            ⚡ Generate Your AI Plan
+        </button>
+    </section>
 
-</div>
 
-</section>
-
-
-
-<!-- FEATURES SECTION -->
-
-<section class="features">
-
-<h2>Our Fitness Tools</h2>
-
-<div class="feature-grid">
-
-<!-- AI TRAINER -->
-
-<div class="feature-card" routerLink="/ai-trainer">
-
-<h3>AI Trainer</h3>
-
-<p>
-Our AI trainer generates workout and diet plans based on
-your height, weight and fitness goal.
-</p>
-
-</div>
-
-
-<!-- WORKOUT LIBRARY -->
-
-<div class="feature-card" routerLink="/workout">
-
-<h3>Workout Library</h3>
-
-<p>
-Explore a large collection of exercises with instructions
-and videos to perform workouts correctly.
-</p>
-
-</div>
-
-
-<!-- DIET PLANNER -->
-
-<div class="feature-card" routerLink="/diet">
-
-<h3>Diet Planner</h3>
-
-<p>
-Receive personalized diet suggestions that support
-your fitness and health goals.
-</p>
-
-</div>
-
-
-<!-- BMI -->
-
-<div class="feature-card" routerLink="/bmi">
-
-<h3>BMI Calculator</h3>
-
-<p>
-Check your Body Mass Index and understand your body
-composition and health level.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ABOUT FITNESS AI -->
-
-<section class="about">
-
-<h2>About Fitness AI</h2>
-
-<p>
-
-Fitness AI combines modern technology and fitness science
-to provide a personalized fitness experience.
-
-Many people struggle with creating workout plans or deciding
-what diet to follow. Fitness AI solves this problem by
-generating smart recommendations tailored to your body.
-
-</p>
-
-<p>
-
-Our goal is to make fitness simple, accessible and effective
-for everyone. Whether you want to build muscle, lose weight
-or maintain your fitness level, Fitness AI helps you stay on
-the right path.
-
-</p>
-
-</section>
-
-
-
-<!-- WORKOUT INFO -->
-
-<section class="workout-info">
-
-<h2>Smart Workout Guidance</h2>
-
-<p>
-
-Exercise is an important part of a healthy lifestyle.
-Fitness AI helps you perform exercises correctly and
-build an effective workout routine.
-
-</p>
-
-<ul>
-
-<li>Strength training exercises</li>
-<li>Cardio workouts</li>
-<li>Core strengthening exercises</li>
-<li>Flexibility and stretching routines</li>
-<li>Beginner to advanced workout plans</li>
-
-</ul>
-
-</section>
-
-
-
-<!-- DIET INFO -->
-
-<section class="diet-info">
-
-<h2>Balanced Nutrition</h2>
-
-<p>
-
-Nutrition plays a key role in achieving your fitness goals.
-Fitness AI suggests healthy meals that provide the right
-balance of protein, carbohydrates and fats.
-
-</p>
-
-<ul>
-
-<li>Healthy breakfast suggestions</li>
-<li>Protein rich meals</li>
-<li>Weight loss friendly diet</li>
-<li>Muscle building nutrition</li>
-<li>Hydration and healthy habits</li>
-
-</ul>
-
-</section>
-
-
-
-<!-- MOTIVATION SECTION -->
-
-<section class="motivation">
-
-<h2>Stay Motivated</h2>
-
-<p>
-
-Fitness is not only about workouts — it is about discipline
-and consistency.
-
-</p>
-
-<div class="quotes">
-
-<div class="quote">
-
-“Take care of your body. It’s the only place you have to live.”
-
-</div>
-
-<div class="quote">
-
-“Success in fitness comes from consistency.”
-
-</div>
-
-<div class="quote">
-
-“Your body can achieve what your mind believes.”
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- CALL TO ACTION -->
-
-<section class="cta">
-
-<h2>Start Your Fitness Journey Today</h2>
-
-<p>
-
-Join Fitness AI and take the first step toward a healthier,
-stronger and more confident version of yourself.
-
-</p>
-
-<button routerLink="/ai-trainer">
-
-Generate Your AI Plan
-
-</button>
-
-</section>
-
-
-
-<!-- FOOTER -->
-
-<footer class="home-footer">
-
-<p>
-
-Fitness AI Project | Built with Angular
-
-</p>
-
-</footer>
+    <!-- FOOTER -->
+    <footer class="home-footer">
+        <p>© 2026 Fitness AI • Built with Angular 🚀</p>
+    </footer>
 
 </div>

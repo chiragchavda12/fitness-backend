@@ -1,70 +1,52 @@
 <div class="history-page">
 
-<div class="history-container">
+    <div class="history-container">
 
-<h1>Workout History</h1>
-<p>Your completed workouts are shown below.</p>
+        <h1>📜 Workout History</h1>
+        <p>Your completed workouts are shown below.</p>
 
+        <!-- EMPTY MESSAGE -->
+        <div *ngIf="workouts.length === 0" class="empty">
+            ❌ No workout history found.
+        </div>
 
-<!-- EMPTY MESSAGE -->
+        <!-- HISTORY GRID -->
+        <div class="history-grid">
 
-<div *ngIf="workouts.length === 0" class="empty">
-No workout history found.
-</div>
+            <div class="history-card" *ngFor="let w of workouts">
 
+                <h2>{{ w.exercise }}</h2>
 
-<!-- HISTORY GRID -->
+                <!-- VIDEO (THUMBNAIL SYSTEM FOR FAST LOAD) -->
+                <div class="video-box">
 
-<div class="history-grid">
+                    <img *ngIf="!w.play && w.video"
+                        [src]="'https://img.youtube.com/vi/' + getVideoId(w.video) + '/hqdefault.jpg'"
+                        (click)="w.play = true" class="thumbnail">
 
-<div
-class="history-card"
-*ngFor="let w of workouts"
->
+                    <iframe *ngIf="w.play && w.video" [src]="getSafeUrl(w.video)" frameborder="0" allowfullscreen>
+                    </iframe>
 
-<h2>{{w.exercise}}</h2>
+                </div>
 
+                <!-- DETAILS -->
+                <div class="details">
 
-<!-- VIDEO -->
+                    <p><b>Sets:</b> {{ w.sets }}</p>
+                    <p><b>Reps:</b> {{ w.reps }}</p>
+                    <p><b>Date:</b> {{ w.date | date:'mediumDate' }}</p>
 
-<div *ngIf="w.video">
+                </div>
 
-<iframe
-width="100%"
-height="200"
-[src]="getSafeUrl(w.video)"
-frameborder="0"
-allowfullscreen>
-</iframe>
+                <!-- DELETE BUTTON -->
+                <button class="delete-btn" (click)="deleteWorkout(w._id)">
+                    🗑 Delete
+                </button>
 
-</div>
+            </div>
 
+        </div>
 
-<div class="details">
-
-<p><b>Sets:</b> {{w.sets}}</p>
-
-<p><b>Reps:</b> {{w.reps}}</p>
-
-<p><b>Date:</b> {{w.date | date}}</p>
-
-</div>
-
-
-<button
-class="delete-btn"
-(click)="deleteWorkout(w._id)"
->
-
-Delete
-
-</button>
-
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </div>

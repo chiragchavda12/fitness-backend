@@ -1,492 +1,176 @@
-/* ================= PAGE BACKGROUND ================= */
-
-.diet-dashboard{
-
-min-height:100vh;
-
-background:linear-gradient(
-135deg,
-#020617,
-#0f172a,
-#1e293b
-);
-
-padding:60px 20px;
-
-color:white;
-
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-
-/* ================= CONTAINER ================= */
-
-.container{
-
-max-width:1200px;
-
-margin:auto;
-
+/* PAGE */
+.diet-dashboard {
+    background: #0f172a;
+    min-height: 100vh;
+    padding: 30px 20px;
+    color: white;
 }
 
-
-/* ================= TITLE ================= */
-
-.container h1{
-
-font-size:40px;
-
-text-align:center;
-
-margin-bottom:10px;
-
-}
-
-.subtitle{
-
-text-align:center;
-
-color:#94a3b8;
-
-margin-bottom:40px;
-
-}
-
-
-/* ================= USER PANEL ================= */
-
-.user-panel{
-
-background:rgba(255,255,255,0.05);
-
-backdrop-filter:blur(10px);
-
-padding:30px;
-
-border-radius:16px;
-
-border:1px solid rgba(255,255,255,0.1);
-
-margin-bottom:40px;
-
-}
-
-.user-panel h2{
-
-margin-bottom:20px;
-
-}
-
-
-/* ================= INPUT GRID ================= */
-
-.input-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-gap:20px;
-
-}
-
-
-/* ================= INPUT ================= */
-
-.input-box{
-
-display:flex;
-
-flex-direction:column;
-
-}
-
-.input-box label{
-
-margin-bottom:6px;
-
-color:#cbd5f5;
-
-font-size:14px;
-
-}
-
-.input-box input,
-.input-box select{
-
-padding:12px;
-
-border:none;
-
-border-radius:8px;
-
-background:#1e293b;
-
-color:white;
-
-font-size:14px;
-
-}
-
-
-/* ================= BUTTON ================= */
-
-.generate-btn{
-
-margin-top:25px;
-
-background:linear-gradient(
-90deg,
-#f59e0b,
-#fbbf24
-);
-
-border:none;
-
-padding:14px 35px;
-
-border-radius:10px;
-
-font-size:16px;
-
-cursor:pointer;
-
-color:black;
-
-transition:0.3s;
-
-}
-
-.generate-btn:hover{
-
-transform:scale(1.05);
-
-box-shadow:0 0 15px #fbbf24;
-
-}
-
-
-/* ================= MACRO SECTION ================= */
-
-.nutrition-summary{
-
-margin-bottom:40px;
-
-}
-
-.macro-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-
-gap:20px;
-
-margin-top:20px;
-
-}
-
-
-/* ================= MACRO CARD ================= */
-
-.macro-card{
-
-padding:25px;
-
-border-radius:14px;
-
-text-align:center;
-
-font-size:18px;
-
-color:white;
-
-transition:0.3s;
-
-}
-
-.macro-card:hover{
-
-transform:translateY(-8px);
-
-}
-
-
-/* COLORS */
-
-.protein{
-
-background:linear-gradient(135deg,#ef4444,#b91c1c);
-
-}
-
-.carbs{
-
-background:linear-gradient(135deg,#3b82f6,#1d4ed8);
-
-}
-
-.fats{
-
-background:linear-gradient(135deg,#f59e0b,#d97706);
-
-}
-
-
-/* ================= MEAL TIMELINE ================= */
-
-.meal-timeline{
-
-margin-top:40px;
-
-}
-
-.meal-timeline h2{
-
-margin-bottom:20px;
-
-}
-
-
-/* ================= MEAL ROW ================= */
-
-.meal-row{
-
-display:flex;
-
-gap:30px;
-
-align-items:center;
-
-background:rgba(255,255,255,0.05);
-
-padding:20px;
-
-border-radius:12px;
-
-margin-bottom:15px;
-
-border:1px solid rgba(255,255,255,0.1);
-
-transition:0.3s;
-
-}
-
-.meal-row:hover{
-
-background:rgba(255,255,255,0.1);
-
-}
-
-
-/* ================= MEAL TIME ================= */
-
-.meal-time{
-
-font-weight:600;
-
-width:150px;
-
-color:#22c55e;
-
-font-size:16px;
-
-}
-
-
-/* ================= FOOD LIST ================= */
-
-.meal-food ul{
-
-list-style:disc;
-
-padding-left:20px;
-
-}
-
-.meal-food li{
-
-margin-bottom:6px;
-
-color:#cbd5f5;
-
-}
-
-
-/* ================= TIPS ================= */
-
-.tips-section{
-
-margin-top:40px;
-
-}
-
-.tips-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-gap:20px;
-
-margin-top:20px;
-
-}
-
-.tip{
-
-background:#1e293b;
-
-padding:25px;
-
-border-radius:12px;
-
-transition:0.3s;
-
-}
-
-.tip:hover{
-
-transform:translateY(-5px);
-
-background:#334155;
-
-}
-
-.tip h4{
-
-margin-bottom:8px;
-
-color:#22c55e;
-
-}
-
-.tip p{
-
-color:#cbd5f5;
-
-font-size:14px;
-
-}
-
-
-/* ================= MOBILE ================= */
-
-@media(max-width:768px){
-
-.meal-row{
-
-flex-direction:column;
-
-align-items:flex-start;
-
-}
-
-.meal-time{
-
-width:auto;
-
-}
-
-}/* ================= MOBILE IMPROVEMENTS ================= */
-
-@media (max-width:768px){
-
-.diet-dashboard{
-padding:40px 15px;
+/* CONTAINER */
+.container {
+    max-width: 1100px;
+    margin: auto;
 }
 
 /* TITLE */
-
-.container h1{
-font-size:28px;
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-.subtitle{
-font-size:14px;
-margin-bottom:25px;
+.subtitle {
+    text-align: center;
+    color: #94a3b8;
+    margin-bottom: 30px;
 }
 
-
-/* USER PANEL */
-
-.user-panel{
-padding:20px;
+/* CARD */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 
 /* INPUT GRID */
-
-.input-grid{
-grid-template-columns:1fr;
-gap:15px;
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 20px 0;
 }
 
+.input-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box label {
+    font-size: 13px;
+    color: #cbd5f5;
+}
+
+.input-box input,
+.input-box select {
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #1e293b;
+    color: white;
+    outline: none;
+}
 
 /* BUTTON */
-
-.generate-btn{
-width:100%;
-padding:14px;
-font-size:15px;
+.generate-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 25px;
+    background: #22c55e;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+    transition: 0.2s;
 }
 
-
-/* MACRO GRID */
-
-.macro-grid{
-grid-template-columns:1fr 1fr;
-gap:15px;
+.generate-btn:hover {
+    background: #16a34a;
 }
 
-.macro-card{
-padding:18px;
-font-size:16px;
+/* MACROS */
+.macro-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
 }
 
-
-/* MEAL ROW */
-
-.meal-row{
-flex-direction:column;
-align-items:flex-start;
-gap:10px;
-padding:18px;
+.macro-card {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    font-weight: bold;
 }
 
-.meal-time{
-width:auto;
-font-size:15px;
+.protein {
+    background: #1d4ed8;
 }
 
-
-/* TIPS GRID */
-
-.tips-grid{
-grid-template-columns:1fr;
-gap:15px;
+.carbs {
+    background: #ea580c;
 }
 
-.tip{
-padding:18px;
+.fats {
+    background: #16a34a;
 }
 
+/* MEAL SECTION */
+.meal-row {
+    display: flex;
+    gap: 20px;
+    margin: 15px 0;
 }
 
-
-/* ================= SMALL PHONES ================= */
-
-@media (max-width:420px){
-
-.container h1{
-font-size:24px;
+.meal-time {
+    width: 150px;
+    font-weight: bold;
 }
 
-.macro-grid{
-grid-template-columns:1fr;
+.meal-food ul {
+    list-style: none;
 }
 
-.macro-card{
-font-size:15px;
+.meal-food li {
+    margin-bottom: 5px;
 }
+
+/* TIPS */
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.tip {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+    .input-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .macro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .meal-row {
+        flex-direction: column;
+    }
+
+    .meal-time {
+        width: 100%;
+    }
 
 }

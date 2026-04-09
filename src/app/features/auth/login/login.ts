@@ -38,6 +38,8 @@ return
 
 }
 
+this.loading=true
+
 const data={
 
 email:this.email,
@@ -49,14 +51,28 @@ this.authService.login(data).subscribe({
 
 next:(res:any)=>{
 
+/* SAVE TOKEN */
+
 localStorage.setItem("token",res.token)
-localStorage.setItem("userId",res.user._id)
-localStorage.setItem("email",res.user.email)
-localStorage.setItem("name",res.user.name)
+
+/* SAVE USER */
 
 localStorage.setItem("user", JSON.stringify(res.user))
 
+/* SAVE USER ID */
+
+localStorage.setItem("userId", res.user._id)
+
+/* SAVE EXTRA INFO */
+
+localStorage.setItem("email", res.user.email)
+localStorage.setItem("name", res.user.name)
+
 alert("Login successful")
+
+this.loading=false
+
+/* REDIRECT */
 
 this.router.navigate(['/dashboard'])
 
@@ -65,7 +81,10 @@ this.router.navigate(['/dashboard'])
 error:(err)=>{
 
 alert("Login failed")
+
 console.log(err)
+
+this.loading=false
 
 }
 

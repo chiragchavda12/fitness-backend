@@ -3,161 +3,120 @@ import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 
 @Component({
-selector:'app-diet',
-standalone:true,
-imports:[CommonModule,FormsModule],
-templateUrl:'./diet.html',
-styleUrls:['./diet.css']
+    selector: 'app-diet',
+    standalone: true,
+    imports: [CommonModule, FormsModule],
+    templateUrl: './diet.html',
+    styleUrls: ['./diet.css']
 })
 
-export class DietComponent{
+export class DietComponent {
 
-/* ================= USER INPUT ================= */
+    /* ================= USER INPUT ================= */
 
-height:number=0
-weight:number=0
-age:number=0
-budget:number=0
-calories:number=0
-goal:string=""
+    height: number = 0
+    weight: number = 0
+    age: number = 0
+    goal: string = ""
 
-/* ================= DIET DATA ================= */
+    /* ================= NUTRITION ================= */
 
-dietPlan:any[]=[]
+    calories: number = 0
+    protein: number = 0
+    carbs: number = 0
+    fats: number = 0
 
-breakfast:string[]=[]
-midmeal:string[]=[]
-lunch:string[]=[]
-evening:string[]=[]
-dinner:string[]=[]
+    /* ================= DIET DATA ================= */
 
+    dietPlan: any[] = []
 
-/* ================= GENERATE DIET ================= */
-
-generateDiet(){
-
-/* RESET */
-
-this.breakfast=[]
-this.midmeal=[]
-this.lunch=[]
-this.evening=[]
-this.dinner=[]
+    breakfast: string[] = []
+    midmeal: string[] = []
+    lunch: string[] = []
+    evening: string[] = []
+    dinner: string[] = []
 
 
-/* ================= WEIGHT LOSS ================= */
+    /* ================= GENERATE DIET ================= */
 
-if(this.goal==="weight_loss"){
+    generateDiet() {
 
-this.breakfast=[
-"Oats with Milk",
-"1 Apple",
-"Green Tea"
-]
+        /* ===== VALIDATION ===== */
+        if (!this.height || !this.weight || !this.age || !this.goal) {
+            alert("Please fill all details")
+            return
+        }
 
-this.midmeal=[
-"Handful Almonds",
-"1 Orange"
-]
+        /* ===== RESET ===== */
+        this.dietPlan = []
 
-this.lunch=[
-"2 Chapati",
-"Mixed Vegetable",
-"Low Fat Curd",
-"Salad"
-]
+        this.breakfast = []
+        this.midmeal = []
+        this.lunch = []
+        this.evening = []
+        this.dinner = []
 
-this.evening=[
-"Green Tea",
-"Roasted Chana"
-]
+        /* ===== CALORIES ===== */
+        this.calories = this.weight * 30
 
-this.dinner=[
-"Vegetable Soup",
-"1 Chapati",
-"Grilled Paneer"
-]
+        if (this.goal === "weight_loss") {
+            this.calories -= 300
+        }
+        else if (this.goal === "muscle_gain") {
+            this.calories += 300
+        }
 
-}
+        /* ===== MACROS ===== */
+        this.protein = Math.round(this.weight * 2)
 
+        if (this.goal === "muscle_gain") {
+            this.protein = Math.round(this.weight * 2.5)
+        }
 
-/* ================= MUSCLE GAIN ================= */
+        this.fats = Math.round(this.weight * 0.8)
 
-else if(this.goal==="muscle_gain"){
+        this.carbs = Math.round(
+            (this.calories - (this.protein * 4 + this.fats * 9)) / 4
+        )
 
-this.breakfast=[
-"4 Egg Omelette / Paneer",
-"Oats",
-"Banana",
-"Milk"
-]
+        /* ===== DIET PLAN ===== */
 
-this.midmeal=[
-"Peanut Butter Sandwich",
-"Protein Shake"
-]
+        // 🔥 WEIGHT LOSS
+        if (this.goal === "weight_loss") {
 
-this.lunch=[
-"Brown Rice",
-"Chicken Breast / Paneer",
-"Vegetables",
-"Curd"
-]
+            this.breakfast = ["Oats with Milk", "1 Apple", "Green Tea"]
+            this.midmeal = ["Almonds", "1 Orange"]
+            this.lunch = ["2 Chapati", "Veg Sabji", "Curd", "Salad"]
+            this.evening = ["Green Tea", "Roasted Chana"]
+            this.dinner = ["Soup", "1 Chapati", "Paneer"]
 
-this.evening=[
-"Banana Shake",
-"Handful Nuts"
-]
+        }
 
-this.dinner=[
-"2 Chapati",
-"Paneer / Fish",
-"Vegetables"
-]
+        // 💪 MUSCLE GAIN
+        else if (this.goal === "muscle_gain") {
 
-}
+            this.breakfast = ["Egg Omelette / Paneer", "Oats", "Banana", "Milk"]
+            this.midmeal = ["Peanut Butter Sandwich", "Protein Shake"]
+            this.lunch = ["Rice", "Chicken / Paneer", "Veg", "Curd"]
+            this.evening = ["Banana Shake", "Nuts"]
+            this.dinner = ["2 Chapati", "Paneer / Fish", "Veg"]
 
+        }
 
-/* ================= MAINTAIN ================= */
+        // ⚖ MAINTAIN
+        else {
 
-else{
+            this.breakfast = ["Poha / Upma", "Fruit", "Milk"]
+            this.midmeal = ["Dry Fruits", "Juice"]
+            this.lunch = ["2 Chapati", "Dal", "Veg", "Salad"]
+            this.evening = ["Tea", "Peanuts"]
+            this.dinner = ["1 Chapati", "Dal / Paneer", "Veg"]
 
-this.breakfast=[
-"Poha / Upma",
-"1 Fruit",
-"Milk"
-]
+        }
 
-this.midmeal=[
-"Dry Fruits",
-"Fruit Juice"
-]
+        /* ===== SHOW RESULT ===== */
+        this.dietPlan = [1]   // trigger UI
 
-this.lunch=[
-"2 Chapati",
-"Dal",
-"Vegetables",
-"Salad"
-]
-
-this.evening=[
-"Tea",
-"Roasted Peanuts"
-]
-
-this.dinner=[
-"1 Chapati",
-"Paneer / Dal",
-"Vegetables"
-]
-
-}
-
-
-/* RESULT SHOW */
-
-this.dietPlan=[...this.breakfast]
-
-}
+    }
 
 }

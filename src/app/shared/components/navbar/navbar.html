@@ -1,104 +1,92 @@
-<nav class="navbar">
+<nav class="navbar" [class.hide]="!isNavbarVisible" [class.show]="isNavbarVisible">
 
-<div class="nav-container">
+    <div class="nav-container">
 
-<!-- LOGO -->
-
-<div class="logo">
-<a routerLink="/">Fitness AI</a>
-</div>
-
-
-<!-- HAMBURGER -->
-
-<div class="hamburger" (click)="toggleMobileMenu()">
-<span></span>
-<span></span>
-<span></span>
-</div>
+        <!-- LOGO -->
+        <div class="logo">
+            <a routerLink="/">Fitness AI</a>
+        </div>
 
 
-<!-- NAV LINKS -->
-
-<ul class="nav-links" [class.active]="mobileMenuOpen">
-
-<li>
-<a routerLink="/" (click)="closeMenu()">Home</a>
-</li>
-
-<li>
-<a routerLink="/ai-trainer" (click)="closeMenu()">AI Trainer</a>
-</li>
-
-<li>
-<a routerLink="/workout" (click)="closeMenu()">Workout</a>
-</li>
-
-<li>
-<a routerLink="/diet" (click)="closeMenu()">Diet</a>
-</li>
-
-<li>
-<a routerLink="/bmi" (click)="closeMenu()">BMI</a>
-</li>
-
-<li>
-<a routerLink="/about" (click)="closeMenu()">About</a>
-</li>
-
-<li>
-<a routerLink="/contact" (click)="closeMenu()">Contact</a>
-</li>
+        <!-- HAMBURGER -->
+        <div class="hamburger" (click)="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
 
-<!-- ACCOUNT MENU -->
+        <!-- NAV LINKS -->
+        <ul class="nav-links" [class.active]="mobileMenuOpen">
 
-<li class="dropdown" *ngIf="isLoggedIn">
+            <li>
+                <a routerLink="/" routerLinkActive="active" (click)="closeMenu()">Home</a>
+            </li>
 
-<button class="drop-btn" (click)="toggleMenu()">
-Account ▾
-</button>
+            <li>
+                <a routerLink="/ai-trainer" routerLinkActive="active" (click)="closeMenu()">AI Trainer</a>
+            </li>
 
-<ul class="dropdown-menu" *ngIf="menuOpen">
+            <li>
+                <a routerLink="/workout" routerLinkActive="active" (click)="closeMenu()">Workout</a>
+            </li>
 
-<li>
-<a routerLink="/dashboard">Dashboard</a>
-</li>
+            <li>
+                <a routerLink="/diet" routerLinkActive="active" (click)="closeMenu()">Diet</a>
+            </li>
 
-<li>
-<a routerLink="/workout-history">History</a>
-</li>
+            <li>
+                <a routerLink="/bmi" routerLinkActive="active" (click)="closeMenu()">BMI</a>
+            </li>
 
-<li>
-<a routerLink="/profile">Profile</a>
-</li>
+            <li>
+                <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a>
+            </li>
 
-<li>
-<button class="logout-btn" (click)="logout()">Logout</button>
-</li>
-
-</ul>
-
-</li>
+            <li>
+                <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
+            </li>
 
 
-<!-- LOGIN BUTTON -->
+            <!-- ACCOUNT MENU -->
+            <li class="dropdown" *ngIf="isLoggedIn">
 
-<li *ngIf="!isLoggedIn">
+                <button class="drop-btn" (click)="toggleMenu()">
+                    Account ▾
+                </button>
 
-<button
-routerLink="/login"
-class="login-btn"
-(click)="closeMenu()">
+                <ul class="dropdown-menu" *ngIf="menuOpen">
 
-Login
+                    <li>
+                        <a routerLink="/dashboard">Dashboard</a>
+                    </li>
 
-</button>
+                    <li>
+                        <a routerLink="/workout-history">History</a>
+                    </li>
 
-</li>
+                    <li>
+                        <a routerLink="/profile">Profile</a>
+                    </li>
 
-</ul>
+                    <li>
+                        <button class="logout-btn" (click)="logout()">Logout</button>
+                    </li>
 
-</div>
+                </ul>
+
+            </li>
+
+
+            <!-- LOGIN BUTTON -->
+            <li *ngIf="!isLoggedIn">
+                <button routerLink="/login" class="login-btn" (click)="closeMenu()">
+                    Login
+                </button>
+            </li>
+
+        </ul>
+
+    </div>
 
 </nav>

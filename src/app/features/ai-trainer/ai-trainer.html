@@ -1,101 +1,72 @@
 <div class="ai-page">
 
-<div class="ai-container">
+    <div class="ai-container">
 
-<h1 class="title">AI Fitness Trainer</h1>
+        <h1 class="title">🤖 AI Fitness Trainer</h1>
 
-<p class="subtitle">
-Generate a smart workout and diet plan based on your body details.
-</p>
+        <p class="subtitle">
+            Get your personalized workout & diet plan instantly
+        </p>
 
+        <!-- FORM -->
+        <div class="form-card">
 
-<!-- FORM -->
+            <h2>📋 Enter Your Details</h2>
 
-<div class="form-card">
+            <div class="form-grid">
 
-<h2>Enter Your Fitness Details</h2>
+                <div class="form-group">
+                    <label>Height (cm)</label>
+                    <input type="number" placeholder="e.g. 170" [(ngModel)]="height">
+                </div>
 
-<div class="form-grid">
+                <div class="form-group">
+                    <label>Weight (kg)</label>
+                    <input type="number" placeholder="e.g. 65" [(ngModel)]="weight">
+                </div>
 
-<div class="form-group">
-<label>Height (cm)</label>
-<input
-type="number"
-placeholder="Enter height"
-[(ngModel)]="height">
-</div>
+                <div class="form-group">
+                    <label>Fitness Goal</label>
+                    <select [(ngModel)]="goal">
+                        <option value="Muscle Gain">💪 Muscle Gain</option>
+                        <option value="Weight Loss">🔥 Weight Loss</option>
+                        <option value="Stay Fit">⚖️ Stay Fit</option>
+                    </select>
+                </div>
 
+            </div>
 
-<div class="form-group">
-<label>Weight (kg)</label>
-<input
-type="number"
-placeholder="Enter weight"
-[(ngModel)]="weight">
-</div>
+            <button class="generate-btn" (click)="generatePlan()">
 
+                ⚡ Generate AI Plan
 
-<div class="form-group">
-<label>Fitness Goal</label>
+            </button>
 
-<select [(ngModel)]="goal">
-
-<option value="Muscle Gain">
-Muscle Gain
-</option>
-
-<option value="Weight Loss">
-Weight Loss
-</option>
-
-<option value="Stay Fit">
-Stay Fit
-</option>
-
-</select>
-
-</div>
-
-</div>
+        </div>
 
 
-<button
-class="generate-btn"
-(click)="generatePlan()">
+        <!-- RESULT -->
+        <div class="result-card" *ngIf="result">
 
-Generate Plan
+            <h2>📊 Your AI Fitness Plan</h2>
 
-</button>
+            <pre>{{result}}</pre>
 
-</div>
-
-
-<!-- RESULT -->
-
-<div class="result-card" *ngIf="result">
-
-<h2>Your AI Fitness Plan</h2>
-
-<pre>
-{{result}}
-</pre>
-
-</div>
+        </div>
 
 
-<!-- TIPS -->
+        <!-- TIPS -->
+        <div class="tips-card">
 
-<div class="tips-card">
+            <h2>💡 Fitness Tips</h2>
 
-<h2>AI Fitness Tips</h2>
+            <p>
+                Stay consistent, train smart and fuel your body properly.
+                Small daily improvements lead to big results.
+            </p>
 
-<p>
-Consistency is the key to fitness. Follow your workout routine,
-eat balanced meals and track your progress regularly.
-</p>
+        </div>
 
-</div>
-
-</div>
+    </div>
 
 </div>
