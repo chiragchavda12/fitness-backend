@@ -14,7 +14,7 @@ app.use(express.json());
 
 // ================= MONGODB CONNECTION =================
 
-mongoose.connect("mongodb+srv://chiragchavda1737_db_user:chirag123@cluster0.gbq28io.mongodb.net/?appName=Cluster0")
+mongoose.connect("mongodb+srv://chiragchavda1737_db_user:chirag123@cluster0.gbq28io.mongodb.net/fitness-ai?retryWrites=true&w=majority")
 .then(()=>{
 console.log("MongoDB Connected");
 })

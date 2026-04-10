@@ -11,71 +11,40 @@ try{
 
 const {name,email,password} = req.body;
 
-
-// check if user already exists
-
 const existingUser = await User.findOne({email});
 
 if(existingUser){
-
-return res.status(400).json({
-message:"User already exists"
-});
-
+return res.status(400).json({ message:"User already exists" });
 }
 
-
-// hash password
-
 const salt = await bcrypt.genSalt(10);
-
 const hashedPassword = await bcrypt.hash(password,salt);
 
-
-// create new user
-
 const user = new User({
-
 name,
 email,
 password:hashedPassword
-
 });
-
 
 await user.save();
 
-
-// response
-
 res.json({
-
 message:"User registered successfully",
-
 user:{
 _id:user._id,
 name:user.name,
 email:user.email
 }
-
 });
 
 }
 
 catch(error){
-
 console.log(error);
-
-res.status(500).json({
-
-message:"Server error"
-
-});
-
+res.status(500).json({ message:"Server error" });
 }
 
 };
-
 
 
 // ================= LOGIN =================
@@ -86,76 +55,41 @@ try{
 
 const {email,password} = req.body;
 
-
-// find user
-
 const user = await User.findOne({email});
 
 if(!user){
-
-return res.status(400).json({
-message:"Invalid email"
-});
-
+return res.status(400).json({ message:"Invalid email" });
 }
-
-
-// compare password
 
 const isMatch = await bcrypt.compare(password,user.password);
 
 if(!isMatch){
-
-return res.status(400).json({
-message:"Invalid password"
-});
-
+return res.status(400).json({ message:"Invalid password" });
 }
 
-
-// create JWT token
-
 const token = jwt.sign(
-
 { id:user._id },
-
 "fitness_secret",
-
 { expiresIn:"7d" }
-
 );
 
-
-// send response
-
 res.json({
-
 token,
-
 user:{
 _id:user._id,
 name:user.name,
 email:user.email
 }
-
 });
 
 }
 
 catch(error){
-
 console.log(error);
-
-res.status(500).json({
-
-message:"Server error"
-
-});
-
+res.status(500).json({ message:"Server error" });
 }
 
 };
-
 
 
 // ================= GET USER =================
@@ -167,11 +101,7 @@ try{
 const user = await User.findById(req.params.id).select("-password");
 
 if(!user){
-
-return res.status(404).json({
-message:"User not found"
-});
-
+return res.status(404).json({ message:"User not found" });
 }
 
 res.json(user);
@@ -179,98 +109,45 @@ res.json(user);
 }
 
 catch(error){
-
 console.log(error);
+res.status(500).json({ message:"Server error" });
+}
 
-res.status(500).json({
-message:"Server error"
+};
+
+
+// ================= UPDATE USER =================
+
+exports.updateUser = async (req,res)=>{
+
+try{
+
+const { name,email,age,height,weight,goal } = req.body;
+
+const user = await User.findByIdAndUpdate(
+req.params.id,
+{
+name,
+email,
+age,
+height,
+weight,
+goal
+},
+{ new:true }
+);
+
+res.json({
+message:"Profile updated successfully",
+user:user
 });
 
 }
 
-};// ================= UPDATE USER =================
-exports.updateUser = async (req,res)=>{
-
-try{
-
-const { name,email,age,height,weight,goal } = req.body
-
-const user = await User.findByIdAndUpdate(
-
-req.params.id,
-
-{
-name,
-email,
-age,
-height,
-weight,
-goal
-},
-
-{ new:true }
-
-)
-
-res.json({
-
-message:"Profile updated",
-
-user:user
-
-})
-
-}
-
 catch(error){
-
 res.status(500).json({
 message:"Error updating profile"
-})
-
+});
 }
 
-}
-/* ================= UPDATE PROFILE ================= */
-
-exports.updateUser = async (req,res)=>{
-
-try{
-
-const { name,email,age,height,weight,goal } = req.body
-
-const user = await User.findByIdAndUpdate(
-
-req.params.id,
-
-{
-name,
-email,
-age,
-height,
-weight,
-goal
-},
-
-{ new:true }
-
-)
-
-res.json({
-
-message:"Profile updated successfully",
-user:user
-
-})
-
-}
-
-catch(error){
-
-res.status(500).json({
-message:"Error updating profile"
-})
-
-}
-
-}
+};
